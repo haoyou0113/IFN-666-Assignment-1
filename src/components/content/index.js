@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const DisplayContent = () => {
-  return <div className='Content'>111DisplayContent</div>;
+export const DisplayContent = (props) => {
+  return <div className='Content'>{props.children}</div>;
 };
 export default DisplayContent;

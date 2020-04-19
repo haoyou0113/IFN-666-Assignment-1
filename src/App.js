@@ -9,7 +9,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function App() {
+export const App = () => {
   return (
     <BrowserRouter>
       <Container>
@@ -23,4 +23,6 @@ export default function App() {
       </Container>
     </BrowserRouter>
   );
-}
+};
+
+export default App;
