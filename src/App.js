@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container, Card } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Header from './components/header';
 import Footer from './components/footer';
 import DisplayContent from './components/content/index';
 import Home from './Screens/Home';
-import Stock from './Screens/Home/Stock';
+import Stock from './Screens/Stock';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,9 +16,17 @@ export const App = () => {
         <Header />
         <DisplayContent>
           <Route path='/' exact component={Home}></Route>
-          <Route path='/home' component={Home}></Route>
-          <Route path='/stock' component={Stock}></Route>
+          <Route
+            path='/'
+            render={() => (
+              <DisplayContent>
+                <Route path='/home' component={Home} />
+                <Route path='/stock' component={Stock} />
+              </DisplayContent>
+            )}
+          ></Route>
         </DisplayContent>
+
         <Footer />
       </Container>
     </BrowserRouter>

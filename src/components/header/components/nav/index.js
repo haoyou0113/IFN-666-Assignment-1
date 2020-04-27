@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MenuConfig from '../../../../config/menuConfig';
 import Nav from 'react-bootstrap/Nav';
+import './index.css';
+import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
 // import { NavLink } from 'react-router-dom';
-
-// import './index.less';
 
 export default function NavTop() {
   const [Menu, setMenu] = useState(MenuConfig);
@@ -16,9 +16,15 @@ export default function NavTop() {
       <Nav defaultActiveKey='/home' as='ul'>
         {Menu.map((item) => {
           return (
-            <Nav.Item as='li'>
-              <Nav.Link href={item.key}>{item.title}</Nav.Link>
-            </Nav.Item>
+            <Link to={item.key}>
+              <Nav.Item
+                as='li'
+                className='menuItem'
+                style={{ margin: 5, color: 'black' }}
+              >
+                {item.title}
+              </Nav.Item>
+            </Link>
           );
         })}
       </Nav>

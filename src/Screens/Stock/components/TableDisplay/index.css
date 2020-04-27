@@ -1,0 +1,7 @@
+#control-hooks {
+  display: flex;
+}
+
+.ant-form-item-control-input {
+  width: 200px;
+}
