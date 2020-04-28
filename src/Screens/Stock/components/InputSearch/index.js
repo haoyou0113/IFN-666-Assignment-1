@@ -20,14 +20,13 @@ const tailLayout = {
 
 export default function InputSearch(props) {
   const { symbol } = props;
-
-  console.log('symbol', symbol);
   const [form] = Form.useForm();
   const onFinish = (values) => {
     props.Searching(values);
   };
   const onReset = () => {
     form.resetFields();
+    props.reSet();
   };
 
   const renderOptions = () =>

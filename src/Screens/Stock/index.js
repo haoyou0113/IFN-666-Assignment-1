@@ -6,7 +6,28 @@ import './index.css';
 export default function Stock() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchData, setSearchData] = useState([]);
+  const [originData, setOriginData] = useState([]);
+
+  const reSet = () => {
+    setData(0);
+  };
+  const Searching = (symbol) => {
+    console.log('originData', data.length);
+    fetch(`http://131.181.190.87:3001/all?symbol=${symbol.Symbol}`)
+      .then((res) => res.json())
+      .then((data) =>
+        data.map((item) => {
+          return {
+            key: item.symbol,
+            symbol: item.symbol,
+            name: item.name,
+            industry: item.industry,
+          };
+        })
+      )
+      .then((data) => setData(data));
+  };
+
   useEffect(() => {
     setLoading(true);
     fetch(`http://131.181.190.87:3001/all`)
@@ -21,31 +42,17 @@ export default function Stock() {
           };
         })
       )
-      .then((data) => setData(data));
+      .then((data) => {
+        setOriginData(data);
+      });
+
     setLoading(false);
   }, []);
 
-  const Searching = (symbol) => {
-    fetch(`http://131.181.190.87:3001/all?symbol=${symbol}`)
-      .then((res) => res.json())
-      .then((data) =>
-        data.map((item) => {
-          return {
-            key: item.symbol,
-            symbol: item.symbol,
-            name: item.name,
-            industry: item.industry,
-          };
-        })
-      )
-      .then((data) => setSearchData(data))
-      .then(console.log('data', data));
-  };
-
   return (
     <div>
-      <InputSearch symbol={data} Searching={Searching} />
-      <TableDisplay data={data} loading={loading} searchData={searchData} />
+      <InputSearch symbol={originData} Searching={Searching} reSet={reSet} />
+      <TableDisplay data={data} originData={originData} loading={loading} />
     </div>
   );
 }
