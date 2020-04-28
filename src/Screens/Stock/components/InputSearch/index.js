@@ -1,7 +1,8 @@
-import React from 'react';
-import { Form, Select, Button } from 'antd';
-import './index.css';
+import React, { Fragment } from 'react';
+import { Form, Select, Button, Input } from 'antd';
 
+import './index.css';
+const { Search } = Input;
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -19,7 +20,7 @@ const tailLayout = {
 };
 
 export default function InputSearch(props) {
-  const { symbol } = props;
+  const { SearchingIndustry } = props;
   const [form] = Form.useForm();
   const onFinish = (values) => {
     props.Searching(values);
@@ -29,42 +30,38 @@ export default function InputSearch(props) {
     props.reSet();
   };
 
-  const renderOptions = () =>
-    symbol.map((item) => {
-      return (
-        <Option value={item.symbol} key={item.symbol}>
-          {item.symbol}
-        </Option>
-      );
-    });
   return (
-    <Form
-      {...layout}
-      form={form}
-      name='control-hooks'
-      layout='horizontal'
-      onFinish={onFinish}
-    >
-      <Form.Item
-        name='Symbol'
-        rules={[
-          {
-            required: true,
-          },
-        ]}
+    <Fragment>
+      <Form
+        {...layout}
+        form={form}
+        name='control-hooks'
+        layout='horizontal'
+        onFinish={onFinish}
       >
-        <Select placeholder='-----' allowClear>
-          {renderOptions()}
-        </Select>
-      </Form.Item>
-      <Form.Item {...tailLayout}>
-        <Button type='primary' htmlType='submit'>
-          Submit
-        </Button>
-        <Button htmlType='button' onClick={onReset}>
-          Reset
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item
+          name='Symbol'
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input
+            placeholder='-----------'
+            onSearch={(value) => onFinish(value)}
+          />
+        </Form.Item>
+        <Form.Item {...tailLayout}>
+          <Button type='primary' htmlType='submit'>
+            Submit
+          </Button>
+          <Button htmlType='button' onClick={onReset}>
+            Reset
+          </Button>
+        </Form.Item>
+      </Form>
+      <Search onSearch={(value) => props.SearchingIndustry(value)} />
+    </Fragment>
   );
 }

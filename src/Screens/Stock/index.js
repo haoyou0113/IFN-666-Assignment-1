@@ -27,7 +27,22 @@ export default function Stock() {
       )
       .then((data) => setData(data));
   };
-
+  const SearchingIndustry = (industry) => {
+    console.log('originData', data.length);
+    fetch(`http://131.181.190.87:3001/industry?industry=${industry}`)
+      .then((res) => res.json())
+      .then((data) =>
+        data.map((item) => {
+          return {
+            key: item.symbol,
+            symbol: item.symbol,
+            name: item.name,
+            industry: item.industry,
+          };
+        })
+      )
+      .then((data) => setData(data));
+  };
   useEffect(() => {
     setLoading(true);
     fetch(`http://131.181.190.87:3001/all`)
@@ -51,7 +66,12 @@ export default function Stock() {
 
   return (
     <div>
-      <InputSearch symbol={originData} Searching={Searching} reSet={reSet} />
+      <InputSearch
+        symbol={originData}
+        Searching={Searching}
+        reSet={reSet}
+        SearchingIndustry={SearchingIndustry}
+      />
       <TableDisplay data={data} originData={originData} loading={loading} />
     </div>
   );
