@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
-import { Form, Select, Button, Input } from 'antd';
-
+import { Form, Button, Input } from 'antd';
 import './index.css';
 const { Search } = Input;
-const { Option } = Select;
 const layout = {
   labelCol: {
     span: 8,
@@ -20,10 +18,11 @@ const tailLayout = {
 };
 
 export default function InputSearch(props) {
-  const { SearchingIndustry } = props;
+  const { SearchingIndustry, searchStock } = props;
   const [form] = Form.useForm();
   const onFinish = (values) => {
-    props.Searching(values);
+    console.log(values);
+    searchStock(values);
   };
   const onReset = () => {
     form.resetFields();
@@ -61,7 +60,7 @@ export default function InputSearch(props) {
           </Button>
         </Form.Item>
       </Form>
-      <Search onSearch={(value) => props.SearchingIndustry(value)} />
+      <Search onSearch={(value) => SearchingIndustry(value)} />
     </Fragment>
   );
 }

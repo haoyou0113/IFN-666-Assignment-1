@@ -1,15 +1,23 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import history from './history';
 import { Table } from 'antd';
 import './index.css';
 
-export default function TableDisplay(props) {
+function TableDisplay(props) {
   const columns = [
     {
       title: 'Symbol',
       dataIndex: 'symbol',
       key: 'symbol',
-      render: (text) => <a>{text}</a>,
+      render: (text) => {
+        return (
+          <Link to={'/stocktablechart'}>
+            <span>{text}</span>
+          </Link>
+        );
+      },
     },
     {
       title: 'Name',
@@ -31,3 +39,4 @@ export default function TableDisplay(props) {
     />
   );
 }
+export default withRouter(TableDisplay);

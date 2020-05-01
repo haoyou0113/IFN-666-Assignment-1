@@ -6,8 +6,6 @@ import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
-// import { NavLink } from 'react-router-dom';
-
 export default function NavTop() {
   const [Menu, setMenu] = useState(MenuConfig);
 
@@ -16,7 +14,7 @@ export default function NavTop() {
       <Nav defaultActiveKey='/home' as='ul'>
         {Menu.map((item) => {
           return (
-            <Link to={item.key}>
+            <Link to={item.key} key={item.key}>
               <Nav.Item
                 as='li'
                 className='menuItem'

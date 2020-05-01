@@ -12,6 +12,7 @@ export default function Stock() {
     setData(0);
   };
   const Searching = (symbol) => {
+    // searching symbol with api
     console.log('originData', data.length);
     fetch(`http://131.181.190.87:3001/all?symbol=${symbol.Symbol}`)
       .then((res) => res.json())
@@ -26,6 +27,20 @@ export default function Stock() {
         })
       )
       .then((data) => setData(data));
+  };
+
+  const searchStock = (values) => {
+    // searching symbol without api
+    if (values !== '') {
+      const stockResult = originData.filter(
+        (item) => item.symbol === values.Symbol
+      );
+      // Compares the target data by filter and changes the display data to the target data
+      setData(stockResult);
+    } else {
+      return setData(originData);
+      // Clicking search when there is no search content displays the initial data
+    }
   };
   const SearchingIndustry = (industry) => {
     console.log('originData', data.length);
@@ -68,8 +83,8 @@ export default function Stock() {
     <div>
       <InputSearch
         symbol={originData}
-        Searching={Searching}
         reSet={reSet}
+        searchStock={searchStock}
         SearchingIndustry={SearchingIndustry}
       />
       <TableDisplay data={data} originData={originData} loading={loading} />

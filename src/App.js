@@ -4,6 +4,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import DisplayContent from './components/content/index';
 import Home from './Screens/Home';
+import StockTableChart from './Screens/StockTableChart';
 import Stock from './Screens/Stock';
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ export const App = () => {
               <DisplayContent>
                 <Route path='/home' component={Home} />
                 <Route path='/stock' component={Stock} />
+                <Route path='/stocktablechart' component={StockTableChart} />
               </DisplayContent>
             )}
           ></Route>
