@@ -6,13 +6,11 @@ import DisplayContent from './components/content/index';
 import Home from './Screens/Home';
 import StockTableChart from './Screens/StockTableChart';
 import Stock from './Screens/Stock';
-import { BrowserRouter, Route } from 'react-router-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { HashRouter, Route } from 'react-router-dom';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Container>
         <Header />
         <DisplayContent>
@@ -31,7 +29,7 @@ export const App = () => {
 
         <Footer />
       </Container>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import history from './history';
 import { Table } from 'antd';
 import './index.css';
 
@@ -11,9 +10,10 @@ function TableDisplay(props) {
       title: 'Symbol',
       dataIndex: 'symbol',
       key: 'symbol',
+      sorter: (a, b) => a.symbol.length - b.symbol.length,
       render: (text) => {
         return (
-          <Link to={'/stocktablechart'}>
+          <Link to={`/stocktablechart?${text}`}>
             <span>{text}</span>
           </Link>
         );
@@ -23,11 +23,13 @@ function TableDisplay(props) {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: 'Industry',
       dataIndex: 'industry',
       key: 'industry',
+      sorter: (a, b) => a.industry.length - b.industry.length,
     },
   ];
 

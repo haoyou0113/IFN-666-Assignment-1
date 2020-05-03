@@ -1,40 +1,67 @@
 import React from 'react';
 import { Table } from 'antd';
-export const StockTable = () => {
+export const StockTable = (props) => {
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
+      title: 'Date',
+      dataIndex: 'date',
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
+      title: 'Open',
+      dataIndex: 'open',
+      sorter: (a, b) => a.open - b.open,
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
+      title: 'High',
+      dataIndex: 'high',
+      sorter: (a, b) => a.high - b.high,
+    },
+    {
+      title: 'Low',
+      dataIndex: 'low',
+      sorter: (a, b) => a.low - b.low,
+    },
+    {
+      title: 'Close',
+      dataIndex: 'close',
+      sorter: (a, b) => a.close - b.close,
+    },
+    {
+      title: 'Volumes',
+      dataIndex: 'volumes',
+      sorter: (a, b) => a.volumes - b.volumes,
     },
   ];
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-  ];
-  return <Table columns={columns} dataSource={data} size='middle' />;
+  function onChange(pagination, filters, sorter, extra) {
+    console.log('params', pagination, filters, sorter, extra);
+  }
+
+  // clearAll = () => {
+  //   this.setState({
+  //     filteredInfo: null,
+  //     sortedInfo: null,
+  //   });
+  // };
+
+  // setAgeSort = () => {
+  //   this.setState({
+  //     sortedInfo: {
+  //       order: 'descend',
+  //       columnKey: 'age',
+  //     },
+  //   });
+  // };
+
+  return (
+    <div>
+      <div>{`Showing stocks for the ${props.stockName} `}</div>
+      <Table
+        columns={columns}
+        dataSource={props.data}
+        size='middle'
+        onChange={onChange}
+      />
+    </div>
+  );
 };
 export default StockTable;

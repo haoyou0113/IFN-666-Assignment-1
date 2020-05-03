@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker, Form, Button, Input } from 'antd';
+import { DatePicker, Form, Button } from 'antd';
 
 const layout = {
   labelCol: {
@@ -10,19 +10,20 @@ const layout = {
   },
 };
 
-const DateSearch = () => {
+const DateSearch = (props) => {
   const [form] = Form.useForm();
   const config = {
     rules: [{ type: 'object', required: true, message: 'Please select time!' }],
   };
   const onFinish = (fieldsValue) => {
     // Should format date value before submit.
-
     const values = {
-      ...fieldsValue,
       'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
     };
-    console.log('Received values of form: ', values);
+
+    // console.log('Received values of form: ', values['date-picker']);
+
+    props.dateSearching(values['date-picker']);
   };
   const onReset = () => {};
   return (
@@ -39,7 +40,7 @@ const DateSearch = () => {
 
       <Form.Item>
         <Button type='primary' htmlType='submit'>
-          Submit
+          Search
         </Button>
       </Form.Item>
     </Form>
