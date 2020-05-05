@@ -5,3 +5,14 @@
 .ant-form-item-control-input {
   width: 200px;
 }
+
+.stockBox {
+  position: relative;
+}
+
+.stockBox .stockIndustry {
+
+  position: absolute;
+  right: 0px;
+  top: 0px
+}

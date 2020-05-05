@@ -1,10 +1,17 @@
 .menuItem {
   border-left: 2px solid rgb(0, 0, 0);
+  color: #fff !important;
 }
 
 .nav a:first-child .menuItem {
   border-left: none;
 }
+
 .nav a:nth-child(2) .menuItem {
   padding-left: 7px;
+}
+
+.navTop {
+  margin: auto 0;
+  height: 100px;
 }

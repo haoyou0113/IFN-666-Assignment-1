@@ -25,7 +25,7 @@ const DateSearch = (props) => {
 
     props.dateSearching(values['date-picker']);
   };
-  const onReset = () => {};
+
   return (
     <Form
       {...layout}

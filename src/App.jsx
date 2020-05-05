@@ -7,7 +7,7 @@ import Home from './Screens/Home';
 import StockTableChart from './Screens/StockTableChart';
 import Stock from './Screens/Stock';
 import { HashRouter, Route } from 'react-router-dom';
-
+import './common/index.css';
 export const App = () => {
   return (
     <HashRouter>

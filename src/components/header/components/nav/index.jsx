@@ -11,7 +11,7 @@ export default function NavTop() {
 
   if (Menu) {
     return (
-      <Nav defaultActiveKey='/home' as='ul'>
+      <Nav className='navTop' defaultActiveKey='/home' as='ul'>
         {Menu.map((item) => {
           return (
             <Link to={item.key} key={item.key}>

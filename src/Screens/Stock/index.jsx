@@ -80,12 +80,13 @@ export default function Stock() {
   }, []);
 
   return (
-    <div>
+    <div className='stockBox'>
       <InputSearch
-        symbol={originData}
+        originData={originData}
         reSet={reSet}
         searchStock={searchStock}
         SearchingIndustry={SearchingIndustry}
+        data={data}
       />
       <TableDisplay data={data} originData={originData} loading={loading} />
     </div>

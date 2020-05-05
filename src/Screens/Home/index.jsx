@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine } from '@fortawesome/free-solid-svg-icons';
-import './index.less';
+import './index.css';
 
 export default function Home() {
   return (

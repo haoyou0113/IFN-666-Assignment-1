@@ -1,6 +1,6 @@
 import React from 'react';
 import NavTop from './components/nav';
-import './index.less';
+import './index.css';
 // import Util from '../../utils/utils';
 // import axios from '../../axios';
 export default class Header extends React.Component {
