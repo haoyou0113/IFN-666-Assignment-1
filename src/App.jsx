@@ -13,19 +13,17 @@ export const App = () => {
     <HashRouter>
       <Container>
         <Header />
-        <DisplayContent>
-          <Route path='/' exact component={Home}></Route>
-          <Route
-            path='/'
-            render={() => (
-              <DisplayContent>
-                <Route path='/home' component={Home} />
-                <Route path='/stock' component={Stock} />
-                <Route path='/stocktablechart' component={StockTableChart} />
-              </DisplayContent>
-            )}
-          ></Route>
-        </DisplayContent>
+        <Route
+          path='/'
+          render={() => (
+            <DisplayContent>
+              <Route path='/' exact component={Home} />
+              <Route path='/home' component={Home} />
+              <Route path='/stock' component={Stock} />
+              <Route path='/stocktablechart' component={StockTableChart} />
+            </DisplayContent>
+          )}
+        ></Route>
 
         <Footer />
       </Container>
