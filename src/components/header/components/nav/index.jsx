@@ -1,31 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import MenuConfig from '../../../../config/menuConfig';
-import Nav from 'react-bootstrap/Nav';
 import './index.css';
 import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { Menu } from 'antd';
 
 export default function NavTop() {
-  const [Menu, setMenu] = useState(MenuConfig);
-
-  if (Menu) {
+  const [current, setCurrent] = useState('/home');
+  const handleClick = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
+  if (MenuConfig) {
     return (
-      <Nav className='navTop' defaultActiveKey='/home' as='ul'>
-        {Menu.map((item) => {
-          return (
-            <Link to={item.key} key={item.key}>
-              <Nav.Item
-                as='li'
-                className='menuItem'
-                style={{ margin: 5, color: 'black' }}
-              >
-                {item.title}
-              </Nav.Item>
-            </Link>
-          );
-        })}
-      </Nav>
+      <Fragment>
+        <div className='logo' />
+        <Menu
+          onClick={handleClick}
+          selectedKeys={current}
+          mode='horizontal'
+          className='navTop'
+        >
+          {MenuConfig.map((item) => {
+            return (
+              <Menu.Item key={item.key} className='menuItem'>
+                <Link to={item.key} key={item.key}>
+                  {item.title}
+                </Link>
+              </Menu.Item>
+            );
+          })}
+        </Menu>
+      </Fragment>
     );
   } else {
     return <div>Render failed</div>;

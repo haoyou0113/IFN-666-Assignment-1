@@ -1,8 +1,11 @@
 .header {
-  background-color: #000;
   height: 100px;
+  display: flex !important;
 }
 
 .navTop {
   color: #fff;
+  font-size: 33px;
+  margin-top: 39px !important;
+  margin-left: 5px;
 }

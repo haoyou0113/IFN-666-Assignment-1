@@ -1,17 +1,21 @@
 .menuItem {
   border-left: 2px solid rgb(0, 0, 0);
-  color: #fff !important;
+
 }
 
-.nav a:first-child .menuItem {
+.logo {
+  background: url('https://www.qut.edu.au/__data/assets/image/0007/909781/qut-logo-og-1200.jpg');
+  height: 76px;
+  width: 82px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 11px;
+
+}
+
+.navTop>li:nth-child(2) {
   border-left: none;
 }
 
-.nav a:nth-child(2) .menuItem {
-  padding-left: 7px;
-}
-
-.navTop {
-  margin: auto 0;
-  height: 100px;
-}
+.menuItem>a:first-child {}
