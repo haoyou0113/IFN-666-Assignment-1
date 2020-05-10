@@ -7,7 +7,7 @@ import './index.css';
 function TableDisplay(props) {
   const columns = [
     {
-      title: 'Symbol',
+      title: props.data.length < props.originData.length ? 'Stock' : 'Symbol',
       dataIndex: 'symbol',
       key: 'symbol',
       sorter: (a, b) => a.symbol.length - b.symbol.length,

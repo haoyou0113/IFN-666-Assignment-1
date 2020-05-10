@@ -1,13 +1,4 @@
 .Content {
-    /* background: url('https://www.icmarkets.com/home/img/icmHeaderBg.jpg'); */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 800px;
-    color: #fff;
-}
-
-.Content {
     height: 1000px;
     text-align: center;
 }

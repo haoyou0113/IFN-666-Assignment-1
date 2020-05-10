@@ -4,13 +4,10 @@ import DateTable from './components/StockTable';
 import LineChart from './components/StockChart';
 import { Alert } from 'antd';
 import moment from 'moment';
-const URL = {
-  stockHistory: 'http://131.181.190.87:3001/history?symbol=',
-  stockHistoryDate:
-    'http://131.181.190.87:3001/history?symbol=xxx&from=yyyy-mm-dd',
-};
+
 export const StockTableChart = (props) => {
   const stockSymbol = props.location.search.substr(1);
+  // const stockSymbol = 'A';  for unity testing
   const [stockData, setStockData] = useState([]);
   const [stockName, setStockName] = useState('');
   const [err, setErr] = useState(false);
@@ -71,7 +68,10 @@ export const StockTableChart = (props) => {
       .then((data) => {
         setStockData(data);
       });
+    console.log('date from :', value);
   };
+  console.log('stockData for a particular stock:', stockData);
+  console.log('name of the particular stock:', stockName);
   return (
     <Fragment>
       <DateSearch dateSearching={dateSearching} />

@@ -36,25 +36,11 @@ export const StockTable = (props) => {
     console.log('params', pagination, filters, sorter, extra);
   }
 
-  // clearAll = () => {
-  //   this.setState({
-  //     filteredInfo: null,
-  //     sortedInfo: null,
-  //   });
-  // };
-
-  // setAgeSort = () => {
-  //   this.setState({
-  //     sortedInfo: {
-  //       order: 'descend',
-  //       columnKey: 'age',
-  //     },
-  //   });
-  // };
-
   return (
     <div>
-      <div>{`Showing stocks for the ${props.stockName} `}</div>
+      <div style={{ margin: 10 }}>
+        Showing stocks for the <b>{props.stockName}</b>{' '}
+      </div>
       <Table
         columns={columns}
         dataSource={props.data}

@@ -20,9 +20,6 @@ const DateSearch = (props) => {
     const values = {
       'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
     };
-
-    // console.log('Received values of form: ', values['date-picker']);
-
     props.dateSearching(values['date-picker']);
   };
 
@@ -43,6 +40,7 @@ const DateSearch = (props) => {
           Search
         </Button>
       </Form.Item>
+      <p>Please select date from 06-03-2019 to 24-03-2020</p>
     </Form>
   );
 };

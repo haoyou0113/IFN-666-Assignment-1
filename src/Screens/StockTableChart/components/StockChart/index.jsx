@@ -20,7 +20,7 @@ function LineChart(props) {
         borderJoinStyle: 'miter',
         pointBorderColor: 'rgb(112, 157, 226)',
         pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
+        pointBorderWidth: 2,
         pointHoverRadius: 5,
         pointHoverBackgroundColor: 'rgb(112, 157, 226)',
         pointHoverBorderColor: 'rgba(220,220,220,1)',
@@ -55,7 +55,7 @@ function LineChart(props) {
         responsive: true,
         title: {
           display: true,
-          text: 'Closing Price',
+          text: 'Fluctuations of Stock Price',
           fontSize: 20,
         },
         scales: {
@@ -63,14 +63,14 @@ function LineChart(props) {
             {
               scaleLabel: {
                 display: true,
-                labelString: 'Day',
+                labelString: 'Date',
               },
             },
           ],
           yAxes: [
             {
               scaleLabel: {
-                labelString: '($)',
+                labelString: '$',
                 display: true,
               },
               ticks: {

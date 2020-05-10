@@ -21,7 +21,7 @@ const tailLayout = {
 };
 
 export default function InputSearch(props) {
-  const { SearchingIndustry, searchStock, originData } = props;
+  const { setIndustry, searchStock, originData } = props;
   const [form] = Form.useForm();
   const onFinish = (values) => {
     searchStock(values);
@@ -31,7 +31,8 @@ export default function InputSearch(props) {
     props.reSet();
   };
   function onChange(value) {
-    SearchingIndustry(value);
+    console.log(value);
+    return setIndustry(value);
   }
   const industry = [...new Set(originData.map((item) => item.industry))];
   // filter repeated industry name
@@ -52,10 +53,7 @@ export default function InputSearch(props) {
             },
           ]}
         >
-          <Input
-            placeholder='-----------'
-            onSearch={(value) => onFinish(value)}
-          />
+          <Input placeholder='-------------' />
         </Form.Item>
         <Form.Item {...tailLayout}>
           <Button type='primary' htmlType='submit'>
